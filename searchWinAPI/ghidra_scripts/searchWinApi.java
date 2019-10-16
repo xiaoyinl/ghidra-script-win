@@ -41,7 +41,7 @@ public class searchWinApi extends GhidraScript {
 			String url = jobj.get("results").getAsJsonArray().get(0).getAsJsonObject().get("url").getAsString();
 			return url;	
 		} catch (Exception e) {
-			println("Warning: the format of response has changed. The response is: ");
+			println("Warning: the format of response has changed or the document is not found. The response is: ");
 			println(response);
 			return "";
 		}
