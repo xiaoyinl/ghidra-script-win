@@ -40,7 +40,7 @@ public class searchWinApi extends GhidraScript {
 			JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
 			String url = jobj.get("results").getAsJsonArray().get(0).getAsJsonObject().get("url").getAsString();
 			return url;	
-		} catch (NullPointerException e) {
+		} catch (Exception e) {
 			println("Warning: the format of response has changed. The response is: ");
 			println(response);
 			return "";
