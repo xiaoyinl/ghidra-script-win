@@ -38,6 +38,10 @@ public class searchWinApi extends GhidraScript {
 	private String extractFirstUrlFromResponse(String response) {
 		try {
 			JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
+			if (jobj.get("count").getAsInt() == 0) {
+				println("The document is not found.");
+				return "";
+			}
 			String url = jobj.get("results").getAsJsonArray().get(0).getAsJsonObject().get("url").getAsString();
 			return url;	
 		} catch (Exception e) {
@@ -64,11 +68,10 @@ public class searchWinApi extends GhidraScript {
     	String response = getFromURI(apiEndpoint + apiToFind);
     	if (response.length() > 0) {
     		String urlToLaunch = extractFirstUrlFromResponse(response);
-        	if (urlToLaunch.length() == 0) {
-        		urlToLaunch = "https://docs.microsoft.com/en-us/search/?search=" + apiToFind + "&category=All";
-        	}
-        	if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-        		Desktop.getDesktop().browse(new URI(urlToLaunch));
+        	if (urlToLaunch.length() > 0) {
+        		if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            		Desktop.getDesktop().browse(new URI(urlToLaunch));
+            	}
         	}
     	} else {
     		println("Warning: network error");
