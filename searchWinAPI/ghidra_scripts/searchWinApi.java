@@ -19,7 +19,7 @@ import com.google.gson.JsonObject;
 
 public class searchWinApi extends GhidraScript {
 
-	private static final String apiEndpoint = "https://docs.microsoft.com/api/search?locale=en-us&scoringprofile=search_for_en_us_pageview&facet=category&%24skip=0&%24top=5&search=";
+	private static final String apiEndpoint = "https://docs.microsoft.com/api/search?locale=en-us&%24filter=scopes%2Fany%28t%3A+t+eq+%27Desktop%27%29&scoringprofile=search_for_en_us_a_b_test&facet=category&%24skip=0&%24top=5&search=";
  	
 	private String getFromURI(String sURL) {
 		URL u = null;
