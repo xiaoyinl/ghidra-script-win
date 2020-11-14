@@ -3,7 +3,7 @@ This repository contains [Ghidra](https://github.com/NationalSecurityAgency/ghid
 
 ## Installation
 1. Clone this repository.
-2. Copy subfolders to `<Ghidra installation directory>/Ghidra/Extensions`
+2. Copy subfolders to `<Ghidra installation directory>/Ghidra/Extensions` (or `<user directory>/.ghidra/.ghidra_<version>/Extensions`, since Ghidra 9.2)
 3. Open Ghidra. Go to File -> Install Extensions. Select the extensions you want to enable.
 
 ## Script 1: Windows API documents searcher
@@ -16,7 +16,7 @@ The following table summarizes the dependencies of the scripts in this repositor
 
 File in this repo | Library Name | License
 --- | --- | ---
-searchWinAPI/lib/gson-2.8.6.jar | [Gson](https://github.com/google/gson) | Apache 2.0
+gson-2.8.6.jar (included in Ghidra since Ghidra 9.2) | [Gson](https://github.com/google/gson) | Apache 2.0
 
 ## License
 This repository is licensed under the [MIT License](LICENSE).
